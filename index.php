@@ -11,17 +11,17 @@
             $sql="SELECT * FROM `slideshows`;";
             $result=mysqli_query($conn,$sql);
             while($row=mysqli_fetch_assoc($result)){
-                echo '
-                  <div class="item item-1">
-                    <div class="img-fill" style="background-image: url('.$row['image'].');">
-                        <div class="text-content">
-                          <h6>'.$row['titleSmall'].'</h6>
-                          <h4>'.$row['title'].'</h4>
-                          <p>'.$row['description'].'</p>
-                        </div>
+              echo '
+                <div class="item item-1">
+                  <div class="img-fill" style="background-image: url('.$row['image'].');">
+                    <div class="text-content">
+                      <h6>'.$row['titleSmall'].'</h6>
+                      <h4>'.$row['title'].'</h4>
+                      <p>'.nl2br($row['description']).'</p>
                     </div>
                   </div>
-                ';
+                </div>
+              ';
             }
           ?>
         </div>
@@ -66,7 +66,7 @@
               while($row=mysqli_fetch_assoc($result)){
                 echo '
                   <h2>'.$row['title'].'</h2>
-                  <p>'.$row['desctiption'].'</p>
+                  <p>'.nl2br($row['desctiption']).'</p>
                   <a href="about.php" class="filled-button">Read More</a>
                 ';
               }
@@ -113,7 +113,7 @@
                       <div class="col-md-6 align-self-center">
                         <div class="right-content">
                           <h2>'.$row['title'].'</h2>
-                          <p>'.$row['desctiption'].'</p>
+                          <p>'.nl2br($row['desctiption']).'</p>
                           <a href="about.php" class="filled-button">Read More</a>
                         </div>
                       </div>
@@ -146,7 +146,7 @@
                       <div class="inner-content">
                         <h4>'.$row['name'].'</h4>
                         <span>'.$row['jobTitle'].'</span>
-                        <p>"'.$row['testimonial'].'"</p>
+                        <p>"'.nl2br($row['testimonial']).'"</p>
                       </div>
                     </div>
                   ';
