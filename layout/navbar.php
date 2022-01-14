@@ -53,10 +53,13 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="about.php">About Us</a>
-              </li>  
+              </li>
               <li class="nav-item">
                 <a class="nav-link" href="services.php">Our Services</a>
-              </li>                          
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="career.php">Career Path</a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link" href="contact.php">Contact Us</a>
               </li>

@@ -43,7 +43,7 @@
                                                             <td>'.$row['id'].'</td>
                                                             <td>'.$row['name'].'</td>
                                                             <td>'.$row['jobTitle'].'</td>
-                                                            <td><button data-toggle="modal" data-target="#editModal" onclick="editId(`'.$row['id'].'`,`'.$row['name'].'`,`'.$row['jobTitle'].'`,`'.$row['testimonial'].'`)" class="btn btn-warning">Edit Text</button></td>
+                                                            <td><button data-toggle="modal" data-target="#editModal" onclick="editId(`'.$row['id'].'`,`'.$row['name'].'`,`'.$row['jobTitle'].'`,`'.htmlentities($row['testimonial']).'`)" class="btn btn-warning">Edit Text</button></td>
                                                         </tr>
                                                     ';
                                                 }
@@ -103,7 +103,7 @@
         </script>
         <?php
             if(isset($_POST['editName'])){
-                $sql="UPDATE `testimonials` SET `name`='".$_POST['name']."', `jobTitle`='".$_POST['jobTitle']."', `testimonial`='".$_POST['testimonial']."' WHERE `id`='".$_POST['id']."';";
+                $sql="UPDATE `testimonials` SET `name`='".$_POST['name']."', `jobTitle`='".$_POST['jobTitle']."', `testimonial`='".str_replace(array('\'','\"'),'',$_POST['testimonial'])."' WHERE `id`='".$_POST['id']."';";
                 $result=mysqli_query($conn,$sql);
                 if($result){
                     echo '

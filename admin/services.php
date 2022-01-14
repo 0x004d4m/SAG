@@ -45,7 +45,7 @@
                                                             <td>'.$row['id'].'</td>
                                                             <td>'.$row['title'].'</td>
                                                             <td><a href="'.$row['image'].'" target="_blank"><img src="'.$row['image'].'" height="100"></a></td>
-                                                            <td><button data-toggle="modal" data-target="#editModal" onclick="editId(`'.$row['id'].'`,`'.$row['title'].'`,`'.$row['intro'].'`,`'.$row['description'].'`)" class="btn btn-warning">Edit Text</button></td>
+                                                            <td><button data-toggle="modal" data-target="#editModal" onclick="editId(`'.$row['id'].'`,`'.$row['title'].'`,`'.htmlentities($row['intro']).'`,`'.htmlentities($row['description']).'`)" class="btn btn-warning">Edit Text</button></td>
                                                             <td><button data-toggle="modal" data-target="#editModal2" onclick="editId2('.$row['id'].')" class="btn btn-warning">Edit Image</button></td>
                                                         </tr>
                                                     ';
@@ -136,7 +136,7 @@
         </script>
         <?php
             if(isset($_POST['editName'])){
-                $sql="UPDATE `services` SET `title`='".$_POST['title']."', `intro`='".$_POST['intro']."', `description`='".$_POST['description']."' WHERE `id`='".$_POST['id']."';";
+                $sql="UPDATE `services` SET `title`='".$_POST['title']."', `intro`='".$_POST['intro']."', `description`='".str_replace(array('\'','\"'),'',$_POST['description'])."' WHERE `id`='".$_POST['id']."';";
                 $result=mysqli_query($conn,$sql);
                 if($result){
                     echo '

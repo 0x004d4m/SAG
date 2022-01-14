@@ -62,14 +62,35 @@
           <div class="col-md-12">
             <div class="contact-form">
               <form id="contact" method="POST">
-                <div class="row">
-                  <div class="col-lg-11">
-                      <div class="alert alert-danger" role="alert">
-                      This is a danger alert—check it out!
-                    </div>
-                  </div>
+                <?php
+                  if(isset($_POST['submit'])){
+                    $sql="INSERT INTO `contactrequest`(`firstName`, `lastName`, `title`, `companyName`, `email`, `companyWebsite`, `phone`, `mobile`, `subject`, `message`) VALUES ('".str_replace(array('\'','\"'),'',$_POST['firstName'])."','".str_replace(array('\'','\"'),'',$_POST['lastName'])."','".str_replace(array('\'','\"'),'',$_POST['title'])."','".str_replace(array('\'','\"'),'',$_POST['companyName'])."','".str_replace(array('\'','\"'),'',$_POST['email'])."','".str_replace(array('\'','\"'),'',$_POST['companyWebsite'])."','".str_replace(array('\'','\"'),'',$_POST['phone'])."','".str_replace(array('\'','\"'),'',$_POST['mobile'])."','".str_replace(array('\'','\"'),'',$_POST['subject'])."','".str_replace(array('\'','\"'),'',$_POST['message'])."');";
+                    $result=mysqli_query($conn,$sql);
+                    if($result){
+                        echo '
+                          <div class="row">
+                            <div class="col-lg-11">
+                                <div class="alert alert-success" role="alert">
+                                  Sent Successfully!
+                              </div>
+                            </div>
+                          </div>
+                        ';
+                    }else{
+                        echo '
+                          <div class="row">
+                            <div class="col-lg-11">
+                                <div class="alert alert-danger" role="alert">
+                                  Something went wrong!
+                              </div>
+                            </div>
+                          </div>
+                        ';
+                    }
+                  }
                   
-                </div>
+                ?>
+                
                 <div class="row">
                   <div class="col-lg-4 col-md-12 col-sm-12">
                     <fieldset>
@@ -123,7 +144,7 @@
                   </div>
                   <div class="col-lg-12">
                     <fieldset>
-                      <button type="submit" id="form-submit" class="filled-button">Send Message</button>
+                      <button type="submit" name="submit" id="form-submit" class="filled-button">Send Message</button>
                     </fieldset>
                   </div>
                 </div>

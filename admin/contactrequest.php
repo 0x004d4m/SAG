@@ -49,7 +49,7 @@
                                                             <td>'.$row['companyName'].'</td>
                                                             <td>'.$row['email'].'</td>
                                                             <td>'.$row['phone'].'</td>
-                                                            <td><button data-toggle="modal" data-target="#editModal" onclick="editId(`'.$row['id'].'`,`'.$row['firstName'].'`,`'.$row['lastName'].'`,`'.$row['title'].'`,`'.$row['companyName'].'`,`'.$row['email'].'`,`'.$row['companyWebsite'].'`,`'.$row['phone'].'`,`'.$row['mobile'].'`,`'.$row['subject'].'`,`'.$row['message'].'`)" class="btn btn-info">View</button></td>
+                                                            <td><button data-toggle="modal" data-target="#editModal" onclick="editId(`'.$row['id'].'`,`'.$row['firstName'].'`,`'.$row['lastName'].'`,`'.$row['title'].'`,`'.$row['companyName'].'`,`'.$row['email'].'`,`'.$row['companyWebsite'].'`,`'.$row['phone'].'`,`'.$row['mobile'].'`,`'.$row['subject'].'`,`'.htmlentities($row['message']).'`)" class="btn btn-info">View</button></td>
                                                         </tr>
                                                     ';
                                                 }
